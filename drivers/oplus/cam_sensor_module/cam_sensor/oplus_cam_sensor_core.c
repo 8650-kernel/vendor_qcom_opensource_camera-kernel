@@ -881,6 +881,7 @@ int cam_sensor_read_uniqueid(struct cam_sensor_ctrl_t *s_ctrl, void *arg)
 	int rc = 0;
 	int i = 0;
 	struct cam_control *cmd = (struct cam_control *)arg;
+        struct cam_oem_reg_setting *regsettings;
 	char uniqueid[MAX_UNIQUE_ID_LENGTH] = {'\0'};
 	char temp[MAX_UNIQUE_ID_LENGTH] = {'\0'};
 	int read_length = 0;
@@ -891,7 +892,7 @@ int cam_sensor_read_uniqueid(struct cam_sensor_ctrl_t *s_ctrl, void *arg)
 		return -1;
 	}
 
-	struct cam_oem_reg_setting *regsettings = vzalloc(cmd->size);
+        regsettings = vzalloc(cmd->size);
 	if(regsettings != NULL)
 	{
 		memset(regsettings, 0, cmd->size);
